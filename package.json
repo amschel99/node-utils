@@ -9,8 +9,8 @@
     "dist"
  ],
   "scripts": {
-    "dev": "nodemon --exec  ts-node --esm src/index.ts",
-    "build":"tsup"
+ 
+    "build":"tsup --watch"
   },
   "author": "Amschel",
   "jest": {
