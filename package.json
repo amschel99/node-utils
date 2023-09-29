@@ -1,0 +1,32 @@
+{
+  "name": "mongo-seed",
+  "version": "1.0.0",
+  "description": "A module to help you create a seed database for your test environments",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+"types": "./dist/index.d.ts",
+"files": [
+    "dist"
+ ],
+  "scripts": {
+    "dev": "nodemon --exec  ts-node --esm src/index.ts",
+    "build":"tsup"
+  },
+  "author": "Amschel",
+  "jest": {
+    "transform": {},
+    "testEnvironment": "node",
+    "testTimeout": 60000
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "ts-node": "^10.9.1",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@types/jest": "^29.5.5",
+    "mongoose": "^7.5.3"
+  }
+}
