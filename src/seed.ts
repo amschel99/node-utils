@@ -32,7 +32,8 @@ export async function seedDatabase(runSaveMiddleware:boolean, seedDir:string) {
       ? model.create(fileContents.default)
       : model.insertMany(fileContents.default);
   });
-  return modelPromises;
+
+ await Promise.all(modelPromises);
 
 }
 // It returns an array of promises promise that resolves with an array of inserted document instances. use await Promise.all() to get the returned array
