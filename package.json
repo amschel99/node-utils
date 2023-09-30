@@ -1,5 +1,5 @@
 {
-  "name": "mongo-seed",
+  "name": "quick-mongo-seed",
   "version": "1.0.0",
   "description": "A module to help you create a seed database for your test environments",
   "main": "./dist/index.js",
@@ -20,7 +20,6 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.7.0",
     "ts-node": "^10.9.1",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
