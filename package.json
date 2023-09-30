@@ -1,6 +1,6 @@
 {
   "name": "quick-mongo-seed",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A module to help you create a seed database for your test environments",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
