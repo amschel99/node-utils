@@ -26,7 +26,7 @@ async function dropAllCollections () {
 }
 
 
-  export function setupDB (databaseName:string, runSaveMiddleware:boolean,connection_url:string) {
+  export function setupDB (databaseName:string, runSaveMiddleware:boolean,connection_url:string, seedDir:string) {
     // Connect to Mongoose
     beforeAll(async () => {
       const url = `${connection_url}/${databaseName}`
@@ -35,7 +35,7 @@ async function dropAllCollections () {
  // Seed Data 
  beforeEach(async () => {
 
-    await seedDatabase(runSaveMiddleware)
+    await seedDatabase(runSaveMiddleware,seedDir)
   },30000)
 
     // Cleans up database between each test

@@ -11,8 +11,8 @@ function toTitleCase(str:string) {
   });
 }
 
-export async function seedDatabase(runSaveMiddleware:boolean) {
-  const dir = await readdir(__dirname);
+export async function seedDatabase(runSaveMiddleware:boolean, seedDir:string) {
+  const dir = await readdir(seedDir);
   const seedFiles = dir.filter((f) => f.endsWith('.seed.js'));
 
   const modelPromises = seedFiles.map(async (file) => {
@@ -26,7 +26,7 @@ export async function seedDatabase(runSaveMiddleware:boolean) {
     }
  
 
-    const fileContents = await import(path.join(__dirname, file));
+    const fileContents = await import(path.join(seedDir, file));
 
     return runSaveMiddleware
       ? model.create(fileContents.default)
@@ -35,5 +35,5 @@ export async function seedDatabase(runSaveMiddleware:boolean) {
   return modelPromises;
 
 }
-// It returns a promise that resolves with an array of inserted document instances. use await Promise.all() to get the returned array
+// It returns an array of promises promise that resolves with an array of inserted document instances. use await Promise.all() to get the returned array
 // runSave middleware is a boolean
