@@ -1,15 +1,18 @@
 # Quick Mongo Seed
 
-Quick Mongo Seed is an npm module designed to simplify the process of seeding a MongoDB database for your Node.js applications, particularly in a testing environment. It allows you to easily populate your MongoDB collections with data from seed files.
+Quick Mongo Seed is an npm module designed to simplify the process of seeding a MongoDB database for your Node.js applications, particularly when writing unit tests using Jest.  It allows you to easily populate your MongoDB collections with data from seed files.
 
 ## Installation
 
 
 ```bash
-npm i quick-mongo-seed
+npm i --save-dev quick-mongo-seed
 ```
 
 ## Usage
+To use this package, create a folder where you will store your seed data. The seed data will be stored in files whose names follow this format, <model name>.seed.js.
+So if you have a model for users called User, you should create a seed file called user.seed.js that has the seed data for users.
+
 Use the function in your test files as shown below. It will automatically seed the database before tests and close the connection clearing the database after all tests have run.
 ```
 setUpDb("databaseName",true,"mongodb://127.0.0.1","/path/to/seedFiles")
@@ -36,8 +39,7 @@ expect(res.body[0].publisher).toBe("kariukiamschel9@gmail.com")
 
 
 ```
-The implementation of the endpoints you want to test depends on you. In the example above, we seed our database with products and users from files, product.seed.js and user.seed.js. The controllers for this endpoints use models named Product and User in their logic. Read along to see how this works.
-
+In the example above, we seed our database with products and users from files, product.seed.js and user.seed.js which are located at "/path/to/seedFiles". 
 **Parameters:**
 
 - `databaseName` (Type: string): The name of the MongoDB database to be used for seeding.
@@ -120,6 +122,35 @@ If you call `setupDB` with `runSaveMiddleware` set to `false`:
 - Schema validations and middleware will be bypassed, allowing data to be inserted without validation checks.
 
 Choose the appropriate value for `runSaveMiddleware` based on your testing and seeding needs, considering whether you want schema validations and middleware to be applied during data insertion.
+
+### Jest Configuration
+
+This package has been tested using the following Jest configuration file. Include this at the root of your project;
+```javascript
+module.exports = {
+    preset: 'ts-jest',
+    testEnvironment: 'node',
+    testTimeout:1000000000,
+    transform: {
+      '^.+\\.ts?$': 'ts-jest',
+    },
+    transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  };
+  ```
+I'm using ```ts-jest``` so if you are working with Typescript, make sure to have that package installed.
+Also make sure you have ```"type":"module"``` in your package.json. If you are using typescript make sure that atleast you have this:
+```json
+ "compilerOptions": {
+    "target": "ES2020",
+    "module": "ES2020",
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "noImplicitAny": false
+  }
+```
 
 
 
