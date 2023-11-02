@@ -4,22 +4,21 @@
   "description": "A module to help you create a seed database for your test environments",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-"types": "./dist/index.d.ts",
-"files": [
+  "types": "./dist/index.d.ts",
+  "files": [
     "dist"
- ],
+  ],
   "scripts": {
- 
-    "build":"tsup --watch"
+    "build": "tsup --watch",
+    "test": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules  npx jest"
   },
   "author": "Amschel",
-  "jest": {
-    "transform": {},
-    "testEnvironment": "node",
-    "testTimeout": 60000
-  },
+  "type": "module",
+  
   "license": "ISC",
   "devDependencies": {
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"

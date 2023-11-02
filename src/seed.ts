@@ -2,13 +2,15 @@ import fs from 'fs';
 import { readdir } from 'fs/promises';
 import path from 'path';
 import mongoose from "mongoose"
+import { fileURLToPath } from 'url'
+import { dirname } from 'path';
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
+const __dirname = dirname(fileURLToPath(import.meta.url));
+console.log(__dirname)
 function toTitleCase(str:string) {
   return str.replace(/\w\S*/g, (txt) => {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
+  });     
 }
 
 export async function seedDatabase(runSaveMiddleware:boolean, seedDir:string) {
