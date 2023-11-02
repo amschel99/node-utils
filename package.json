@@ -14,8 +14,7 @@
   },
   "author": "Amschel",
   "type": "module",
-  
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "jest": "^29.7.0",
     "ts-jest": "^29.1.1",
