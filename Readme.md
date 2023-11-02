@@ -154,10 +154,7 @@ Also make sure you have ```"type":"module"``` in your package.json. If you are u
 
 
 
-## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
 
 
 
